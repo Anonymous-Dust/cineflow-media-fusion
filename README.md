@@ -1,73 +1,128 @@
-# Welcome to your Lovable project
 
-## Project info
+# FlixStream - Modern Movie & TV Show Streaming Platform
 
-**URL**: https://lovable.dev/projects/13e80fe8-f873-4807-a1be-0b33281ac621
+A modern, responsive streaming platform built with React, TypeScript, and Tailwind CSS, integrated with The Movie Database (TMDB) API.
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- 🎬 **Modern UI/UX**: Clean, Netflix-inspired design with smooth animations
+- 🔍 **Search & Discovery**: Search movies and TV shows with real-time results
+- 📱 **Responsive Design**: Works perfectly on all devices
+- 🎯 **Category Filtering**: Browse by movies, TV shows, or all content
+- ⭐ **Rich Content**: Trending, popular, top-rated, and now playing content
+- 🎮 **Video Player**: Custom video player with modern controls
+- 🌟 **TMDB Integration**: Real-time data from The Movie Database
 
-**Use Lovable**
+## Tech Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/13e80fe8-f873-4807-a1be-0b33281ac621) and start prompting.
+- **Frontend**: React 18, TypeScript, Tailwind CSS
+- **UI Components**: Shadcn/ui, Lucide React icons
+- **State Management**: React Query for API state management
+- **API**: TMDB (The Movie Database) API
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS with custom animations
 
-Changes made via Lovable will be committed automatically to this repo.
+## Getting Started
 
-**Use your preferred IDE**
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Get your TMDB API key from [https://www.themoviedb.org/settings/api](https://www.themoviedb.org/settings/api)
+4. Replace the demo API key in `src/services/tmdb.ts` with your actual key
+5. Start the development server: `npm run dev`
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## API Key Setup
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+To use your own TMDB API key:
 
-Follow these steps:
+1. Open `src/services/tmdb.ts`
+2. Replace the `TMDB_API_KEY` value with your actual API key
+3. The current key is a demo key with limited functionality
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## Features Overview
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### 🏠 Homepage
+- Hero section with featured movie
+- Multiple content carousels (Trending, Popular, Top Rated)
+- Smooth scrolling navigation
+- Category filtering
 
-# Step 3: Install the necessary dependencies.
-npm i
+### 🔍 Search
+- Real-time search functionality
+- Search across movies and TV shows
+- Results displayed in responsive grid
+- Search suggestions and auto-complete
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+### 🎬 Content Discovery
+- Trending content (daily/weekly)
+- Popular movies and TV shows
+- Top-rated content
+- Now playing movies
+- Upcoming releases
 
-**Edit a file directly in GitHub**
+### 📱 Responsive Design
+- Mobile-first approach
+- Tablet and desktop optimized
+- Touch-friendly navigation
+- Responsive video player
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### 🎮 Video Player
+- Custom video player interface
+- Play/pause controls
+- Volume control
+- Fullscreen support
+- Progress tracking
+- Settings menu
 
-**Use GitHub Codespaces**
+## Customization
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Colors & Themes
+The app uses a custom color palette defined in `tailwind.config.ts`. You can customize:
+- Primary/secondary colors
+- Gradient backgrounds
+- Glass morphism effects
+- Dark theme variations
 
-## What technologies are used for this project?
+### Fonts
+Currently using Inter and Space Grotesk fonts. You can change fonts in:
+- `index.html` (Google Fonts links)
+- `tailwind.config.ts` (font family configuration)
 
-This project is built with:
+### Layout & Components
+All components are modular and can be easily customized:
+- `Header.tsx` - Navigation and search
+- `HeroSection.tsx` - Featured content banner
+- `MovieCard.tsx` - Content item display
+- `VideoPlayer.tsx` - Video playback interface
+- `ContentRow.tsx` - Horizontal content carousel
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Performance Features
 
-## How can I deploy this project?
+- **Lazy Loading**: Images and content load on demand
+- **Responsive Images**: Multiple image sizes from TMDB
+- **Smooth Animations**: Hardware-accelerated CSS animations
+- **Optimized API Calls**: React Query for caching and deduplication
+- **Code Splitting**: Automatic code splitting with Vite
 
-Simply open [Lovable](https://lovable.dev/projects/13e80fe8-f873-4807-a1be-0b33281ac621) and click on Share -> Publish.
+## Browser Support
 
-## Can I connect a custom domain to my Lovable project?
+- Chrome (recommended)
+- Firefox
+- Safari
+- Edge
+- Mobile browsers (iOS Safari, Chrome Mobile)
 
-Yes, you can!
+## License
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+This project is for educational purposes. TMDB API usage subject to their terms of service.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
+
+---
+
+Built with ❤️ using modern web technologies
