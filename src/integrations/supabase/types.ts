@@ -14,16 +14,287 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      content: {
+        Row: {
+          backdrop_path: string | null
+          content_type: Database["public"]["Enums"]["content_type"]
+          created_at: string | null
+          featured: boolean | null
+          id: string
+          overview: string | null
+          poster_path: string | null
+          release_date: string | null
+          runtime: number | null
+          status: string | null
+          title: string
+          tmdb_id: number
+          trailer_url: string | null
+          updated_at: string | null
+          video_url: string | null
+          vote_average: number | null
+          vote_count: number | null
+        }
+        Insert: {
+          backdrop_path?: string | null
+          content_type: Database["public"]["Enums"]["content_type"]
+          created_at?: string | null
+          featured?: boolean | null
+          id?: string
+          overview?: string | null
+          poster_path?: string | null
+          release_date?: string | null
+          runtime?: number | null
+          status?: string | null
+          title: string
+          tmdb_id: number
+          trailer_url?: string | null
+          updated_at?: string | null
+          video_url?: string | null
+          vote_average?: number | null
+          vote_count?: number | null
+        }
+        Update: {
+          backdrop_path?: string | null
+          content_type?: Database["public"]["Enums"]["content_type"]
+          created_at?: string | null
+          featured?: boolean | null
+          id?: string
+          overview?: string | null
+          poster_path?: string | null
+          release_date?: string | null
+          runtime?: number | null
+          status?: string | null
+          title?: string
+          tmdb_id?: number
+          trailer_url?: string | null
+          updated_at?: string | null
+          video_url?: string | null
+          vote_average?: number | null
+          vote_count?: number | null
+        }
+        Relationships: []
+      }
+      content_genres: {
+        Row: {
+          content_id: string
+          genre_id: number
+        }
+        Insert: {
+          content_id: string
+          genre_id: number
+        }
+        Update: {
+          content_id?: string
+          genre_id?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "content_genres_content_id_fkey"
+            columns: ["content_id"]
+            isOneToOne: false
+            referencedRelation: "content"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "content_genres_genre_id_fkey"
+            columns: ["genre_id"]
+            isOneToOne: false
+            referencedRelation: "genres"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      favorites: {
+        Row: {
+          added_at: string | null
+          content_id: string | null
+          id: string
+          user_id: string | null
+        }
+        Insert: {
+          added_at?: string | null
+          content_id?: string | null
+          id?: string
+          user_id?: string | null
+        }
+        Update: {
+          added_at?: string | null
+          content_id?: string | null
+          id?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "favorites_content_id_fkey"
+            columns: ["content_id"]
+            isOneToOne: false
+            referencedRelation: "content"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "favorites_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      genres: {
+        Row: {
+          created_at: string | null
+          id: number
+          name: string
+          tmdb_id: number | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: number
+          name: string
+          tmdb_id?: number | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: number
+          name?: string
+          tmdb_id?: number | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string | null
+          email: string
+          full_name: string | null
+          id: string
+          role: Database["public"]["Enums"]["user_role"] | null
+          subscription_expires_at: string | null
+          subscription_status:
+            | Database["public"]["Enums"]["subscription_status"]
+            | null
+          updated_at: string | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string | null
+          email: string
+          full_name?: string | null
+          id: string
+          role?: Database["public"]["Enums"]["user_role"] | null
+          subscription_expires_at?: string | null
+          subscription_status?:
+            | Database["public"]["Enums"]["subscription_status"]
+            | null
+          updated_at?: string | null
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string | null
+          email?: string
+          full_name?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["user_role"] | null
+          subscription_expires_at?: string | null
+          subscription_status?:
+            | Database["public"]["Enums"]["subscription_status"]
+            | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      watch_history: {
+        Row: {
+          completed: boolean | null
+          content_id: string | null
+          id: string
+          progress: number | null
+          user_id: string | null
+          watched_at: string | null
+        }
+        Insert: {
+          completed?: boolean | null
+          content_id?: string | null
+          id?: string
+          progress?: number | null
+          user_id?: string | null
+          watched_at?: string | null
+        }
+        Update: {
+          completed?: boolean | null
+          content_id?: string | null
+          id?: string
+          progress?: number | null
+          user_id?: string | null
+          watched_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "watch_history_content_id_fkey"
+            columns: ["content_id"]
+            isOneToOne: false
+            referencedRelation: "content"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "watch_history_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      watchlist: {
+        Row: {
+          added_at: string | null
+          content_id: string | null
+          id: string
+          user_id: string | null
+        }
+        Insert: {
+          added_at?: string | null
+          content_id?: string | null
+          id?: string
+          user_id?: string | null
+        }
+        Update: {
+          added_at?: string | null
+          content_id?: string | null
+          id?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "watchlist_content_id_fkey"
+            columns: ["content_id"]
+            isOneToOne: false
+            referencedRelation: "content"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "watchlist_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_current_user_role: {
+        Args: Record<PropertyKey, never>
+        Returns: Database["public"]["Enums"]["user_role"]
+      }
     }
     Enums: {
-      [_ in never]: never
+      content_type: "movie" | "tv_show"
+      subscription_status: "active" | "inactive" | "cancelled" | "expired"
+      user_role: "user" | "admin" | "moderator"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +421,10 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      content_type: ["movie", "tv_show"],
+      subscription_status: ["active", "inactive", "cancelled", "expired"],
+      user_role: ["user", "admin", "moderator"],
+    },
   },
 } as const
