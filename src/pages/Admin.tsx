@@ -1,4 +1,3 @@
-
 import { useAuth } from '@/hooks/useAuth';
 import { useEffect, useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
@@ -9,9 +8,11 @@ import { Badge } from '@/components/ui/badge';
 import { Users, Film, Tv, Star, BarChart3 } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
+type UserRole = 'user' | 'admin' | 'moderator';
+
 export default function Admin() {
   const { user } = useAuth();
-  const [userRole, setUserRole] = useState<string | null>(null);
+  const [userRole, setUserRole] = useState<UserRole | null>(null);
   const [users, setUsers] = useState<any[]>([]);
   const [content, setContent] = useState<any[]>([]);
   const [stats, setStats] = useState({
@@ -38,7 +39,7 @@ export default function Admin() {
       .eq('id', user.id)
       .single();
     
-    setUserRole(data?.role || 'user');
+    setUserRole((data?.role as UserRole) || 'user');
   };
 
   const fetchData = async () => {
@@ -69,7 +70,7 @@ export default function Admin() {
     setLoading(false);
   };
 
-  const updateUserRole = async (userId: string, newRole: string) => {
+  const updateUserRole = async (userId: string, newRole: UserRole) => {
     const { error } = await supabase
       .from('profiles')
       .update({ role: newRole })
