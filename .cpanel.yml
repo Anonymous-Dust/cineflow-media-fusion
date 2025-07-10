@@ -2,7 +2,7 @@
 deployment:
   tasks:
     - /bin/echo "Starting Node.js deployment"
-    - export APP_DIR=/home/bigba1331/github    # Ganti ini dengan path yang sesuai
+    - export APP_DIR=/home/bigba1331/github1    # Ganti ini dengan path yang sesuai
     - /bin/cp -r * $APP_DIR
     - cd $APP_DIR
     - /bin/npm install
